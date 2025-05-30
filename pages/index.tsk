@@ -6,7 +6,10 @@ export default function Home() {
     <>
       <Head>
         <title>Forma Space - AI Interior Design</title>
-        <meta name="description" content="Welcome to Forma Space - Your AI-powered interior design assistant." />
+        <meta
+          name="description"
+          content="Welcome to Forma Space - Your AI-powered interior design assistant."
+        />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
@@ -20,11 +23,10 @@ export default function Home() {
           Upload your images and see the magic happen!
         </p>
 
-        <Link
-          href="/upload"
-          className="rounded-md bg-indigo-600 px-8 py-4 text-white text-lg font-semibold hover:bg-indigo-700 transition"
-        >
-          Get Started
+        <Link href="/upload" legacyBehavior>
+          <a className="rounded-md bg-indigo-600 px-8 py-4 text-white text-lg font-semibold hover:bg-indigo-700 transition">
+            Get Started
+          </a>
         </Link>
 
         <footer className="mt-20 text-gray-500 text-sm">
