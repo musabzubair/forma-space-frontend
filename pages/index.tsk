@@ -1,4 +1,3 @@
-// pages/index.tsx
 import Head from 'next/head';
 import Link from 'next/link';
 
@@ -21,10 +20,11 @@ export default function Home() {
           Upload your images and see the magic happen!
         </p>
 
-        <Link href="/upload">
-          <a className="rounded-md bg-indigo-600 px-8 py-4 text-white text-lg font-semibold hover:bg-indigo-700 transition">
-            Get Started
-          </a>
+        <Link
+          href="/upload"
+          className="rounded-md bg-indigo-600 px-8 py-4 text-white text-lg font-semibold hover:bg-indigo-700 transition"
+        >
+          Get Started
         </Link>
 
         <footer className="mt-20 text-gray-500 text-sm">
