@@ -10,14 +10,17 @@ type ProcessResponse = {
 
 export default function Result() {
   const router = useRouter();
-  const { filePath, style } = router.query;
+  const { filePath, style } = router.query as {
+    filePath?: string | string[];
+    style?: string | string[];
+  };
 
   // Ensure filePath and style are strings, not arrays
   const filePathStr = Array.isArray(filePath) ? filePath[0] : filePath;
   const styleStr = Array.isArray(style) ? style[0] : style;
 
   const [result, setResult] = useState<ProcessResponse | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -37,7 +40,7 @@ export default function Result() {
           throw new Error('Failed to process image');
         }
 
-        const data = await res.json();
+        const data: ProcessResponse = await res.json();
         setResult(data);
       } catch (err) {
         if (err instanceof Error) setError(err.message);
@@ -55,7 +58,7 @@ export default function Result() {
       <main className="min-h-screen p-6 flex flex-col items-center justify-center">
         <p className="text-gray-700">
           Missing parameters. Please{' '}
-          <Link href="/upload" legacyBehavior>
+          <Link href="/upload">
             <a className="text-indigo-600 underline">upload an image</a>
           </Link>
           .
@@ -64,9 +67,10 @@ export default function Result() {
     );
   }
 
-  const imgSrc = result?.processedImage
-    ? `https://forma-space-backend.onrender.com${result.processedImage.startsWith('/') ? '' : '/'}${result.processedImage}`
-    : '';
+  const imgSrc =
+    result?.processedImage
+      ? `https://forma-space-backend.onrender.com${result.processedImage.startsWith('/') ? '' : '/'}${result.processedImage}`
+      : '';
 
   return (
     <main className="min-h-screen p-6 flex flex-col items-center bg-gray-50">
@@ -77,17 +81,17 @@ export default function Result() {
       {error && (
         <p className="text-red-600 mb-6">
           Error: {error} <br />
-          <Link href="/upload" legacyBehavior>
+          <Link href="/upload">
             <a className="text-indigo-600 underline">Try uploading again</a>
           </Link>
         </p>
       )}
 
-      {result && (
+      {result && !loading && !error && (
         <div className="max-w-3xl w-full bg-white rounded shadow p-6 flex flex-col items-center">
           <p className="mb-4 text-gray-700 font-semibold">Style Applied: {result.styleApplied}</p>
           <img src={imgSrc} alt={`Processed styled room - ${result.styleApplied}`} className="rounded max-w-full" />
-          <Link href="/upload" legacyBehavior>
+          <Link href="/upload">
             <a className="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
               Upload Another Image
             </a>
