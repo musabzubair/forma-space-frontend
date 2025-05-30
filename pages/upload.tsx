@@ -32,7 +32,7 @@ export default function Upload() {
 
     try {
       const formData = new FormData();
-      formData.append('file', file);
+      formData.append('roomImage', file);  // <-- changed 'file' to 'roomImage'
       formData.append('style', style);
 
       const res = await fetch('https://forma-space-backend.onrender.com/api/upload-image', {

@@ -67,6 +67,7 @@ export default function Result() {
     );
   }
 
+  // Construct image source safely: ensure no duplicate slashes
   const imgSrc =
     result?.processedImage
       ? `https://forma-space-backend.onrender.com${result.processedImage.startsWith('/') ? '' : '/'}${result.processedImage}`
@@ -96,14 +97,17 @@ export default function Result() {
               <Image
                 src={imgSrc}
                 alt={`Processed styled room - ${result.styleApplied}`}
-                layout="fill"
-                objectFit="contain"
+                fill
+                style={{ objectFit: 'contain' }}
                 priority
               />
             )}
           </div>
 
-          <Link href="/upload" className="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition">
+          <Link
+            href="/upload"
+            className="mt-6 inline-block px-6 py-3 bg-indigo-600 text-white rounded hover:bg-indigo-700 transition"
+          >
             Upload Another Image
           </Link>
         </div>
