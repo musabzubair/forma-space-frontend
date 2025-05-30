@@ -18,7 +18,7 @@ export default function Upload() {
     setStyle(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!file) {
@@ -31,7 +31,6 @@ export default function Upload() {
     }
 
     try {
-      // Create form data to send the file to backend
       const formData = new FormData();
       formData.append('file', file);
       formData.append('style', style);
@@ -45,12 +44,15 @@ export default function Upload() {
         throw new Error('Upload failed');
       }
 
-      const data = await res.json();
+      const data: { filePath: string } = await res.json();
 
-      // Assuming backend returns a filePath to use in result page
       router.push(`/result?filePath=${encodeURIComponent(data.filePath)}&style=${encodeURIComponent(style)}`);
-    } catch (err: any) {
-      setError(err.message || 'Something went wrong');
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('Something went wrong');
+      }
     }
   };
 
