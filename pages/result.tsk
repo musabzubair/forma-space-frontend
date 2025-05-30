@@ -24,7 +24,7 @@ export default function Result() {
       setLoading(true);
       setError('');
       try {
-        const res = await fetch('https://forma-space-backend.onrender.com/process-image', {
+        const res = await fetch('https://forma-space-backend.onrender.com/api/process-image', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ filePath, style }),
