@@ -24,7 +24,7 @@ export default function Result() {
       setLoading(true);
       setError('');
       try {
-        const res = await fetch('http://localhost:4000/api/process-image', {
+        const res = await fetch('https://forma-space-backend.onrender.com/api/process-image', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ filePath, style }),
@@ -65,7 +65,7 @@ export default function Result() {
         <div className="max-w-3xl w-full bg-white rounded shadow p-6 flex flex-col items-center">
           <p className="mb-4 text-gray-700 font-semibold">Style Applied: {result.styleApplied}</p>
           <img
-            src={`http://localhost:4000${result.processedImage}`}
+            src={`https://forma-space-backend.onrender.com${result.processedImage}`}
             alt={`Processed styled room - ${result.styleApplied}`}
             className="rounded max-w-full"
           />
