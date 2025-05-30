@@ -1,0 +1,36 @@
+// pages/index.tsx
+import Head from 'next/head';
+import Link from 'next/link';
+
+export default function Home() {
+  return (
+    <>
+      <Head>
+        <title>Forma Space - AI Interior Design</title>
+        <meta name="description" content="Welcome to Forma Space - Your AI-powered interior design assistant." />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </Head>
+
+      <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-white to-gray-100 p-6">
+        <h1 className="text-5xl font-extrabold text-gray-900 mb-6">
+          Welcome to <span className="text-indigo-600">Forma Space</span>
+        </h1>
+
+        <p className="text-lg text-gray-700 max-w-xl text-center mb-12">
+          Transform your room photos with AI-powered interior design styles.
+          Upload your images and see the magic happen!
+        </p>
+
+        <Link href="/upload">
+          <a className="rounded-md bg-indigo-600 px-8 py-4 text-white text-lg font-semibold hover:bg-indigo-700 transition">
+            Get Started
+          </a>
+        </Link>
+
+        <footer className="mt-20 text-gray-500 text-sm">
+          &copy; {new Date().getFullYear()} Forma Space. All rights reserved.
+        </footer>
+      </main>
+    </>
+  );
+}

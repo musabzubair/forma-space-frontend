@@ -1,0 +1,13 @@
+/* styles/typography.css */
+
+.heading-xl {
+  @apply text-4xl font-bold mb-4;
+}
+
+.subheading {
+  @apply text-xl font-semibold text-gray-700;
+}
+
+.paragraph {
+  @apply text-base text-gray-600 leading-relaxed;
+}

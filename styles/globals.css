@@ -1,0 +1,19 @@
+/* styles/globals.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './layout.css';
+@import './themes.css';
+@import './components.css';
+@import './typography.css';
+@import './utilities.css';
+
+body {
+  @apply bg-white text-gray-900 font-sans;
+}
+
+a {
+  @apply text-primary hover:underline;
+}

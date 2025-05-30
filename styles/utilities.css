@@ -1,0 +1,10 @@
+/* styles/utilities.css */
+
+.shadow-deep {
+  @apply shadow-2xl;
+}
+
+.rounded-xl {
+  @apply rounded-xl;
+}
+
